@@ -1,28 +1,52 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+    <imgcontainer :bgimg="'1.jpg'" :title="'标题一'" :index="'0'" :leaveTitleIndex="leaveTitleIndex" :leaveTitleTop="leaveTitleTop" :scrollY="scrollY"></imgcontainer>
+    <imgcontainer :bgimg="'2.jpg'" :title="'标题二'" :index="'1'" :leaveTitleIndex="leaveTitleIndex" :leaveTitleTop="leaveTitleTop" :scrollY="scrollY"></imgcontainer>
+    <imgcontainer :bgimg="'3.jpg'" :title="'标题三'" :index="'2'" :leaveTitleIndex="leaveTitleIndex" :leaveTitleTop="leaveTitleTop" :scrollY="scrollY"></imgcontainer>
+    <imgcontainer :bgimg="'4.jpg'" :title="'标题四'" :index="'3'" :leaveTitleIndex="leaveTitleIndex" :leaveTitleTop="leaveTitleTop" :scrollY="scrollY"></imgcontainer>
+    <map_to_rentArea>  </map_to_rentArea>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+  import imgcontainer from './components/section'
+  import map_to_rentArea from './components/map_to_rentArea.vue'
 
-export default {
-  name: 'app',
-  components: {
-    Hello
+  export default {
+    data () {
+      return {
+        imgArr: [1, 2, 3, 4],
+        chooseOne: '',
+//     第几个元素的title的index
+        leaveTitleIndex: '',
+//      第几个元素title的顶部到浏览器顶部的距离
+        leaveTitleTop: '',
+        scrollY: ''
+      }
+    },
+    name: 'app',
+    components: {
+      imgcontainer,
+      map_to_rentArea
+    },
+    mounted () {
+      var self = this
+      var containerArr = document.getElementsByClassName('container')
+      window.addEventListener('scroll', function () {
+        self.scrollY = window.scrollY
+        for (var i = 0; i < containerArr.length; i++) {
+          var itemtitle = document.querySelector('.title' + i)
+          var titleTop = itemtitle.offsetTop - window.scrollY
+          if (titleTop > -window.innerHeight / 2 && titleTop < window.innerHeight / 2) {
+            self.leaveTitleTop = titleTop
+            self.leaveTitleIndex = i
+          }
+        }
+      })
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
