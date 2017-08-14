@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>
+</head>
+<body>
+<div id="test">
+  <div v-for="item in result">
+    {{item[0]}},{{item[1]}}
+  </div>
+</div>
+<script src="testdata.js"></script>
+<script>
+ var result ={};
+  var tempArr = str.split('\n');
+  for (i=0;i<tempArr.length;i++){
+    var secondstr = tempArr[i].split(',')[1];
+    if(secondstr.indexOf('套内')>0){
+      var index = secondstr.indexOf('套内');
+      secondstr = secondstr.substr(index+2);
+      if (secondstr.indexOf(')')>0){
+        secondstr = secondstr.substr(0,secondstr.indexOf(')'));
+      }
+    }
+    result[i] = {};
+    result[i][0] = tempArr[i].split(',')[0];
+    result[i][1] = secondstr;
+  }
+  console.log(result);
+
+var app = new Vue({
+  el: '#test',
+  data: {
+    demo: 'Hello Vue!',
+    result:result
+  }
+})
+
+
+  var result ={};
+  var tempArr = str.split('\n');
+  for (i=0;i<tempArr.length;i++){
+    var secondstr = tempArr[i].split(',')[1];
+    if(secondstr.indexOf('套内')>0){
+      var index = secondstr.indexOf('套内');
+      secondstr = secondstr.substr(index+2);
+      if (secondstr.indexOf(')')>0){
+        secondstr = secondstr.substr(0,secondstr.indexOf(')'));
+      }
+    }
+    result[i] = {};
+    result[i][0] = tempArr[i].split(',')[0];
+    result[i][1] = secondstr;
+  }
+  console.log(result);
+  
+</script>
+</body>
+</html>
