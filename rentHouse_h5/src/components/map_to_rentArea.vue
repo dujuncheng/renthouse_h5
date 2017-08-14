@@ -129,14 +129,18 @@
       <div class="title">
         <h1>在北京，</h1>
         <h4 v-if="selectitem && payValue">您每月 <span style="font-size: 30px">{{payValue}}元</span>的租金在 <span style="font-size: 30px">{{mapdata[selectitem].name}}</span> 可以租到的房屋面积为：</h4>
+        <h4 v-if="!selectitem || !payValue">您需花多少钱，才能租到满意的房子？</h4>
       </div>
       <div class="square-container">
         <div class="square" v-if="selectitem && payValue" :style="{width: Math.sqrt(mapdata[selectitem].rate * payValue)*3.6 + '%'}">
-          <div class="left-top-arrow"></div>
-          <div class="square-content">
+          <div class="left-top-arrow" v-if="Math.sqrt(mapdata[selectitem].rate * payValue)*3.6 > 20"></div>
+          <div class="square-content" :style="{fontSize: (12 + Math.sqrt(mapdata[selectitem].rate * payValue)) + 'px' }">
             <p class="square-content-text">{{mapdata[selectitem].rate * payValue | subto2}}㎡</p>
           </div>
-          <div content="right-bottom-arrow"></div>
+          <div class="right-bottom-arrow" v-if="Math.sqrt(mapdata[selectitem].rate * payValue)*3.6 > 20"></div>
+        </div>
+        <div class="before-square"  v-if="!selectitem || !payValue">
+          <p class="before-square-text">?</p>
         </div>
       </div>
     </div>
@@ -353,6 +357,7 @@
   }
   .map-bottom-left{
     flex: 1;
+    height: 100%;
   }
   .mentougou{
     height: 50%;
@@ -375,6 +380,7 @@
   }
   .map-bottom-middle{
     flex: 3;
+    height: 100%;
   }
   .map-bottom-middle-top{
     width:100%;
@@ -504,6 +510,7 @@
 
   .map-bottom-right{
     flex: 1;
+    height: 100%;
   }
   .tongzhou{
     height: 50%;
@@ -582,16 +589,70 @@
     -o-transition: all  0.5s;
     transition: all  0.5s;
   }
+  .before-square{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 240px;
+    height: 240px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.5);
+    -webkit-transition: all 0.5s;
+    -moz-transition: all  0.5s;
+    -ms-transition: all  0.5s;
+    -o-transition: all  0.5s;
+    transition: all  0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .before-square-text{
+    font-size: 70px;
+    color: white;
+  }
   .square-content{
     position: absolute;
-
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
   }
   .square-content-text{
     color: white;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
   }
   .square::after{
     content: '';
     margin-top: 80%;
     display: block;
+  }
+  .left-top-arrow{
+    background-image: url("../../static/image/arrow2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    overflow: hidden;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+  }
+  .right-bottom-arrow{
+    background-image: url("../../static/image/arrow1.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    overflow: hidden;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
   }
 </style>

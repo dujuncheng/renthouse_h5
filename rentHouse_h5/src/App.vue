@@ -3,15 +3,15 @@
     <imgcontainer :bgimg="'1.jpg'" :title="'标题一'" :index="'0'" :leaveTitleIndex="leaveTitleIndex" :leaveTitleTop="leaveTitleTop" :scrollY="scrollY"></imgcontainer>
     <imgcontainer :bgimg="'2.jpg'" :title="'标题二'" :index="'1'" :leaveTitleIndex="leaveTitleIndex" :leaveTitleTop="leaveTitleTop" :scrollY="scrollY"></imgcontainer>
     <imgcontainer :bgimg="'3.jpg'" :title="'标题三'" :index="'2'" :leaveTitleIndex="leaveTitleIndex" :leaveTitleTop="leaveTitleTop" :scrollY="scrollY"></imgcontainer>
+    <map_to_rentArea> </map_to_rentArea>
     <imgcontainer :bgimg="'4.jpg'" :title="'标题四'" :index="'3'" :leaveTitleIndex="leaveTitleIndex" :leaveTitleTop="leaveTitleTop" :scrollY="scrollY"></imgcontainer>
-    <map_to_rentArea>  </map_to_rentArea>
   </div>
 </template>
 
 <script>
   import imgcontainer from './components/section'
   import map_to_rentArea from './components/map_to_rentArea.vue'
-
+  import hot_map from './components/hot_map.vue'
   export default {
     data () {
       return {
