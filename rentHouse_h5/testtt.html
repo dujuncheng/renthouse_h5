@@ -1,0 +1,88 @@
+s<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>renthouse_h5</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=CNGz1ZPd5YgEMUbRckC1khoAY0wV1Bay"></script>
+    <script src="https://cdn.bootcss.com/echarts/3.6.2/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/3.6.2/extension/bmap.min.js"></script>
+    <script
+      src="http://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous"></script>
+    <style>
+      * {
+        font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+      }
+      body{
+        margin: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="/static/data/textdata.js"></script>
+    <script>
+      var dataarr = text.split('a');
+      var temp = [];
+      for ( var i = 0; i < dataarr.length; i++){
+        dataarr[i] = dataarr[i].substr(0, dataarr[i].length-1)
+        if( dataarr[i].length !== 0 ){
+           var temparr = dataarr[i].split(',');
+            for ( var x = 0; x< temparr.length;x++){
+              temparr[x] = +temparr[x]
+            }
+            temp.push(temparr)
+        }
+      }
+      var testsss =temp
+      var colorarr = [];
+      for(var i = 0; i<1000;i++){
+        colorarr[i] = 'rgba(50,204,254,' + i*1/1000 + ')'
+      }
+      console.log(colorarr);
+      console.log(testsss,'sssssssss');
+    </script>
+    <script type="text/javascript">
+      window.onload = function () {
+        alert(0);
+        var myChart = echarts.init(document.getElementById('hot-map-app'));
+        myChart.setOption(option = {
+          animation: false,
+          bmap: {
+            center: [116.421922, 39.953637],
+            zoom: 11,
+            roam: true
+          },
+          visualMap: {
+            show: true,
+            top: 'top',
+            min: 0,
+            max: 330000,
+            seriesIndex: 0,
+            calculable: true,
+            inRange: {
+              color: ['#FF8577','#eac736','#3065FF','red'].reverse()
+            }
+          },
+          series: [{
+            type: 'heatmap',
+            coordinateSystem: 'bmap',
+            data: testsss,
+            pointSize: 8,
+            blurSize: 8
+          }]
+        });
+        if (!app.inNode) {
+          // 添加百度地图插件
+          var bmap = myChart.getModel().getComponent('bmap').getBMap();
+          bmap.addControl(new BMap.MapTypeControl());
+        }
+      }
+    </script>
+    <script src="static/js/tags.js"></script>
+  </body>
+</html>
+
+

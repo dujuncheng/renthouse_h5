@@ -1,146 +1,151 @@
 <template>
-  <div class="section-container">
-    <div class="map-container">
-      <div class="map-title">
-        <h2>北京各区域平均租金/月</h2>
-      </div>
-      <div class="map-desc">
-        <p v-if="!selectitem">①请点击地图选择区域</p>
-        <p v-if="selectitem">①您选择了 <strong class="selectitem"> {{mapdata[selectitem].name}} </strong></p>
-      </div>
-      <div class="map">
-        <div class="map-top">
-          <div class="yanqing center bg1" @click="selectArea('yanqing')"  @mouseenter="hover('yanqing')"  @mouseleave="hover('')"  :class="{ darkbg1:(hoveritem == 'yanqing' || selectitem == 'yanqing' )}">
-            <p class="name">延庆区</p>
-            <p class="price">1063.6</p>
-          </div>
-          <div class="huairou center bg1" @click="selectArea('huairou')" @mouseenter="hover('huairou')"  @mouseleave="hover('')":class="{ darkbg1:hoveritem === 'huairou' || selectitem == 'huairou' }">
-            <p class="name">怀柔区</p>
-            <p class="price">1038.71</p>
-          </div>
-          <div class="miyun center bg1" @click="selectArea('miyun')" @mouseenter="hover('miyun')"  @mouseleave="hover('')":class="{ darkbg1:hoveritem === 'miyun' || selectitem == 'miyun'}">
-            <p class="name">密云区</p>
-            <p class="price">844.73</p>
-          </div>
-          <div class="pinggu center bg1" @click="selectArea('pinggu')" @mouseenter="hover('pinggu')"  @mouseleave="hover('')":class="{ darkbg1:hoveritem === 'pinggu' || selectitem == 'pinggu'}">
-            <p class="name">平谷区</p>
-            <p class="price">802.64</p>
-          </div>
-        </div>
-        <div class="map-middle">
-          <div class="changping center bg3" @click="selectArea('changping')" @mouseenter="hover('changping')"  @mouseleave="hover('')":class="{ darkbg3:hoveritem === 'changping' || selectitem == 'changping'}">
-            <p class="name">昌平区</p>
-            <p class="price">1801.45</p>
-          </div>
-          <div class="shunyi center bg3" @click="selectArea('shunyi')" @mouseenter="hover('shunyi')"  @mouseleave="hover('')":class="{ darkbg3:hoveritem === 'shunyi' || selectitem == 'shunyi'}">
-            <p class="name">顺义区</p>
-            <p class="pirce">2081.08</p>
-          </div>
-        </div>
-        <div class="map-bottom">
-          <div class="map-bottom-left">
-            <div class="mentougou center bg2" @click="selectArea('mentougou')"  @mouseenter="hover('mentougou')"  @mouseleave="hover('')":class="{ darkbg2:hoveritem === 'mentougou' || selectitem == 'mentougou'}">
-              <p class="name">门头沟区</p>
-              <p class="price">1595.39</p>
-            </div>
-            <div class="fangshan center bg2" @click="selectArea('fangshan')" @mouseenter="hover('fangshan')"  @mouseleave="hover('')":class="{ darkbg2:hoveritem === 'fangshan' || selectitem == 'fangshan'}">
-              <p class="name">房山区</p>
-              <p class="price">1173.4</p>
-            </div>
-          </div>
-          <div class="map-bottom-middle">
-            <div class="map-bottom-middle-top">
-              <div class="haidian center bg4" @click="selectArea('haidian')" @mouseenter="hover('haidian')"  @mouseleave="hover('')":class="{ darkbg4:hoveritem === 'haidian' || selectitem == 'haidian'}">
-                <p class="name">海淀区</p>
-                <p class="price">3351.46</p>
-              </div>
-              <div class="chaoyang center bg4" @click="selectArea('chaoyang')" @mouseenter="hover('chaoyang')"  @mouseleave="hover('')":class="{ darkbg4:hoveritem === 'chaoyang' || selectitem == 'chaoyang'}">
-                <p class="name">朝阳区</p>
-                <p class="price">3426.13</p>
-              </div>
-            </div>
-            <div class="map-bottom-middle-middle">
-              <div class="map-bottom-middle-middle-left">
-                <div class="map-bottom-middle-middle-left-left">
-                  <div class="shijingshan center bg3" @click="selectArea('shijingshan')" @mouseenter="hover('shijingshan')"  @mouseleave="hover('')":class="{ darkbg3:hoveritem === 'shijingshan' || selectitem == 'shijingshan'}">
-                    <p class="name">石景山区</p>
-                    <p class="price">2420.72</p>
-                  </div>
-                </div>
-                <div class="map-bottom-middle-middle-left-right">
-                  <div class="map-bottom-middle-middle-left-right-top">
-                    <div class="xicheng center bg4" @click="selectArea('xicheng')" @mouseenter="hover('xicheng')"  @mouseleave="hover('')":class="{ darkbg4:hoveritem === 'xicheng' || selectitem == 'xicheng'}">
-                      <p class="name">西城区</p>
-                      <p class="price">4136.17</p>
-                    </div>
-                    <div class="dongcheng center bg4" @click="selectArea('dongcheng')" @mouseenter="hover('dongcheng')"  @mouseleave="hover('')":class="{ darkbg4:hoveritem === 'dongcheng' || selectitem == 'dongcheng'}" >
-                      <p class="name">东城区</p>
-                      <p class="price">4171.3</p>
-                    </div>
-                  </div>
-                  <div class="map-bottom-middle-middle-left-right-bottom">
-                    <div class="fengtai center bg3" @click="selectArea('fengtai')" @mouseenter="hover('fengtai')"  @mouseleave="hover('')":class="{ darkbg3:hoveritem === 'fengtai' || selectitem == 'fengtai'}">
-                      <p class="name">丰台区</p>
-                      <p class="price">2476.36</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="map-bottom-middle-middle-right">
-                <div class="map-bottom-middle-middle-right-top bg2" @click="selectArea('tongzhou')" @mouseenter="hover('tongzhou')"  @mouseleave="hover('')":class="{ darkbg2:hoveritem === 'tongzhou' || selectitem == 'tongzhou'}"></div>
-                <div class="map-bottom-middle-middle-right-bottom bg2" @click="selectArea('daxing')" @mouseenter="hover('daxing')"  @mouseleave="hover('')":class="{ darkbg2:hoveritem === 'daxing' || selectitem == 'daxing'}"></div>
-              </div>
-            </div>
-            <div class="map-bottom-middle-bottom">
-              <div class="map-bottom-middle-bottom-left">
-                <div class="fangshan bg2" style="height: 100%;" @click="selectArea('fangshan')" @mouseenter="hover('fangshan')"  @mouseleave="hover('')":class="{ darkbg2:hoveritem === 'fangshan' || selectitem == 'fangshan'}"></div>
-              </div>
-              <div class="map-bottom-middle-bottom-right">
-                <div class="daxing bg2" style="height: 100%" @click="selectArea('daxing')" @mouseenter="hover('daxing')"  @mouseleave="hover('')":class="{ darkbg2:hoveritem === 'daxing' || selectitem == 'daxing'}"></div>
-              </div>
-            </div>
-          </div>
-          <div class="map-bottom-right">
-            <div class="tongzhou center bg2" @click="selectArea('tongzhou')" @mouseenter="hover('tongzhou')"  @mouseleave="hover('')":class="{ darkbg2:hoveritem === 'tongzhou' || selectitem == 'tongzhou'}">
-              <p class="name">通州区</p>
-              <p class="price">1581.49</p>
-            </div>
-            <div class="daxing center bg2" @click="selectArea('daxing')" @mouseenter="hover('daxing')"  @mouseleave="hover('')":class="{ darkbg2:hoveritem === 'daxing' || selectitem == 'daxing'}">
-              <p class="name">大兴区</p>
-              <p class="price">1715.54</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="map-desc">
-        <p v-if="!payValue">②请选择您每月租金</p>
-        <p v-if="payValue">②您选择的每月租金是 <strong class="payvalue">{{payValue}}元</strong></p>
-      </div>
-      <div class="pay">
-        <div class="pay-title">
-          <h3>每月租金</h3>
-        </div>
-        <div class="pay-content">
-          <el-slider v-model="payValue" :step="10" show-input :max="10000" :min="500"></el-slider>
-        </div>
-      </div>
+  <div>
+    <div class="totle-title-container">
+      <h1>假如你现在手上有一笔钱，用它来租哪块儿地方最划算？</h1>
     </div>
-    <div class="house-container">
-      <div class="title">
-        <h1>在北京，</h1>
-        <h4 v-if="selectitem && payValue">您每月 <span style="font-size: 30px">{{payValue}}元</span>的租金在 <span style="font-size: 30px">{{mapdata[selectitem].name}}</span> 可以租到的房屋面积为：</h4>
-        <h4 v-if="!selectitem || !payValue">您需花多少钱，才能租到满意的房子？</h4>
-      </div>
-      <div class="square-container">
-        <div class="square" v-if="selectitem && payValue" :style="{width: Math.sqrt(mapdata[selectitem].rate * payValue)*3.6 + '%'}">
-          <div class="left-top-arrow" v-if="Math.sqrt(mapdata[selectitem].rate * payValue)*3.6 > 20"></div>
-          <div class="square-content" :style="{fontSize: (12 + Math.sqrt(mapdata[selectitem].rate * payValue)) + 'px' }">
-            <p class="square-content-text">{{mapdata[selectitem].rate * payValue | subto2}}㎡</p>
-          </div>
-          <div class="right-bottom-arrow" v-if="Math.sqrt(mapdata[selectitem].rate * payValue)*3.6 > 20"></div>
+    <div class="section-container">
+      <div class="map-container">
+        <div class="map-title">
+          <h2>北京各区域平均租金/月</h2>
         </div>
-        <div class="before-square"  v-if="!selectitem || !payValue">
-          <p class="before-square-text">?</p>
+        <div class="map-desc">
+          <p v-if="!selectitem">①请点击地图选择区域</p>
+          <p v-if="selectitem">①您选择了 <strong class="selectitem"> {{mapdata[selectitem].name}} </strong></p>
+        </div>
+        <div class="map">
+          <div class="map-top">
+            <div class="yanqing center bg1" @click="selectArea('yanqing')"  @mouseenter="hover('yanqing')"  @mouseleave="hover('')"  :class="{ darkbg1:(hoveritem == 'yanqing' || selectitem == 'yanqing' )}">
+              <p class="name">延庆区</p>
+              <p class="price">1063.6</p>
+            </div>
+            <div class="huairou center bg1" @click="selectArea('huairou')" @mouseenter="hover('huairou')"  @mouseleave="hover('')":class="{ darkbg1:hoveritem === 'huairou' || selectitem == 'huairou' }">
+              <p class="name">怀柔区</p>
+              <p class="price">1038.71</p>
+            </div>
+            <div class="miyun center bg1" @click="selectArea('miyun')" @mouseenter="hover('miyun')"  @mouseleave="hover('')":class="{ darkbg1:hoveritem === 'miyun' || selectitem == 'miyun'}">
+              <p class="name">密云区</p>
+              <p class="price">844.73</p>
+            </div>
+            <div class="pinggu center bg1" @click="selectArea('pinggu')" @mouseenter="hover('pinggu')"  @mouseleave="hover('')":class="{ darkbg1:hoveritem === 'pinggu' || selectitem == 'pinggu'}">
+              <p class="name">平谷区</p>
+              <p class="price">802.64</p>
+            </div>
+          </div>
+          <div class="map-middle">
+            <div class="changping center bg3" @click="selectArea('changping')" @mouseenter="hover('changping')"  @mouseleave="hover('')":class="{ darkbg3:hoveritem === 'changping' || selectitem == 'changping'}">
+              <p class="name">昌平区</p>
+              <p class="price">1801.45</p>
+            </div>
+            <div class="shunyi center bg3" @click="selectArea('shunyi')" @mouseenter="hover('shunyi')"  @mouseleave="hover('')":class="{ darkbg3:hoveritem === 'shunyi' || selectitem == 'shunyi'}">
+              <p class="name">顺义区</p>
+              <p class="pirce">2081.08</p>
+            </div>
+          </div>
+          <div class="map-bottom">
+            <div class="map-bottom-left">
+              <div class="mentougou center bg2" @click="selectArea('mentougou')"  @mouseenter="hover('mentougou')"  @mouseleave="hover('')":class="{ darkbg2:hoveritem === 'mentougou' || selectitem == 'mentougou'}">
+                <p class="name">门头沟区</p>
+                <p class="price">1595.39</p>
+              </div>
+              <div class="fangshan center bg2" @click="selectArea('fangshan')" @mouseenter="hover('fangshan')"  @mouseleave="hover('')":class="{ darkbg2:hoveritem === 'fangshan' || selectitem == 'fangshan'}">
+                <p class="name">房山区</p>
+                <p class="price">1173.4</p>
+              </div>
+            </div>
+            <div class="map-bottom-middle">
+              <div class="map-bottom-middle-top">
+                <div class="haidian center bg4" @click="selectArea('haidian')" @mouseenter="hover('haidian')"  @mouseleave="hover('')":class="{ darkbg4:hoveritem === 'haidian' || selectitem == 'haidian'}">
+                  <p class="name">海淀区</p>
+                  <p class="price">3351.46</p>
+                </div>
+                <div class="chaoyang center bg4" @click="selectArea('chaoyang')" @mouseenter="hover('chaoyang')"  @mouseleave="hover('')":class="{ darkbg4:hoveritem === 'chaoyang' || selectitem == 'chaoyang'}">
+                  <p class="name">朝阳区</p>
+                  <p class="price">3426.13</p>
+                </div>
+              </div>
+              <div class="map-bottom-middle-middle">
+                <div class="map-bottom-middle-middle-left">
+                  <div class="map-bottom-middle-middle-left-left">
+                    <div class="shijingshan center bg3" @click="selectArea('shijingshan')" @mouseenter="hover('shijingshan')"  @mouseleave="hover('')":class="{ darkbg3:hoveritem === 'shijingshan' || selectitem == 'shijingshan'}">
+                      <p class="name">石景山区</p>
+                      <p class="price">2420.72</p>
+                    </div>
+                  </div>
+                  <div class="map-bottom-middle-middle-left-right">
+                    <div class="map-bottom-middle-middle-left-right-top">
+                      <div class="xicheng center bg4" @click="selectArea('xicheng')" @mouseenter="hover('xicheng')"  @mouseleave="hover('')":class="{ darkbg4:hoveritem === 'xicheng' || selectitem == 'xicheng'}">
+                        <p class="name">西城区</p>
+                        <p class="price">4136.17</p>
+                      </div>
+                      <div class="dongcheng center bg4" @click="selectArea('dongcheng')" @mouseenter="hover('dongcheng')"  @mouseleave="hover('')":class="{ darkbg4:hoveritem === 'dongcheng' || selectitem == 'dongcheng'}" >
+                        <p class="name">东城区</p>
+                        <p class="price">4171.3</p>
+                      </div>
+                    </div>
+                    <div class="map-bottom-middle-middle-left-right-bottom">
+                      <div class="fengtai center bg3" @click="selectArea('fengtai')" @mouseenter="hover('fengtai')"  @mouseleave="hover('')":class="{ darkbg3:hoveritem === 'fengtai' || selectitem == 'fengtai'}">
+                        <p class="name">丰台区</p>
+                        <p class="price">2476.36</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="map-bottom-middle-middle-right">
+                  <div class="map-bottom-middle-middle-right-top bg2" @click="selectArea('tongzhou')" @mouseenter="hover('tongzhou')"  @mouseleave="hover('')":class="{ darkbg2:hoveritem === 'tongzhou' || selectitem == 'tongzhou'}"></div>
+                  <div class="map-bottom-middle-middle-right-bottom bg2" @click="selectArea('daxing')" @mouseenter="hover('daxing')"  @mouseleave="hover('')":class="{ darkbg2:hoveritem === 'daxing' || selectitem == 'daxing'}"></div>
+                </div>
+              </div>
+              <div class="map-bottom-middle-bottom">
+                <div class="map-bottom-middle-bottom-left">
+                  <div class="fangshan bg2" style="height: 100%;" @click="selectArea('fangshan')" @mouseenter="hover('fangshan')"  @mouseleave="hover('')":class="{ darkbg2:hoveritem === 'fangshan' || selectitem == 'fangshan'}"></div>
+                </div>
+                <div class="map-bottom-middle-bottom-right">
+                  <div class="daxing bg2" style="height: 100%" @click="selectArea('daxing')" @mouseenter="hover('daxing')"  @mouseleave="hover('')":class="{ darkbg2:hoveritem === 'daxing' || selectitem == 'daxing'}"></div>
+                </div>
+              </div>
+            </div>
+            <div class="map-bottom-right">
+              <div class="tongzhou center bg2" @click="selectArea('tongzhou')" @mouseenter="hover('tongzhou')"  @mouseleave="hover('')":class="{ darkbg2:hoveritem === 'tongzhou' || selectitem == 'tongzhou'}">
+                <p class="name">通州区</p>
+                <p class="price">1581.49</p>
+              </div>
+              <div class="daxing center bg2" @click="selectArea('daxing')" @mouseenter="hover('daxing')"  @mouseleave="hover('')":class="{ darkbg2:hoveritem === 'daxing' || selectitem == 'daxing'}">
+                <p class="name">大兴区</p>
+                <p class="price">1715.54</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="map-desc">
+          <p v-if="!payValue">②请选择您每月租金</p>
+          <p v-if="payValue">②您选择的每月租金是 <strong class="payvalue">{{payValue}}元</strong></p>
+        </div>
+        <div class="pay">
+          <div class="pay-title">
+            <h3>每月租金</h3>
+          </div>
+          <div class="pay-content">
+            <el-slider v-model="payValue" :step="10" show-input :max="10000" :min="500"></el-slider>
+          </div>
+        </div>
+      </div>
+      <div class="house-container">
+        <div class="title">
+          <h1>在北京，</h1>
+          <h4 v-if="selectitem && payValue">您每月 <span style="font-size: 30px">{{payValue}}元</span>的租金在 <span style="font-size: 30px">{{mapdata[selectitem].name}}</span> 可以租到的房屋面积为：</h4>
+          <h4 v-if="!selectitem || !payValue">您需花多少钱，才能租到满意的房子？</h4>
+        </div>
+        <div class="square-container">
+          <div class="square" v-if="selectitem && payValue" :style="{width: Math.sqrt(mapdata[selectitem].rate * payValue)*3.6 + '%'}">
+            <div class="left-top-arrow" v-if="Math.sqrt(mapdata[selectitem].rate * payValue)*3.6 > 20"></div>
+            <div class="square-content" :style="{fontSize: (12 + Math.sqrt(mapdata[selectitem].rate * payValue)) + 'px' }">
+              <p class="square-content-text">{{mapdata[selectitem].rate * payValue | subto2}}㎡</p>
+            </div>
+            <div class="right-bottom-arrow" v-if="Math.sqrt(mapdata[selectitem].rate * payValue)*3.6 > 20"></div>
+          </div>
+          <div class="before-square"  v-if="!selectitem || !payValue">
+            <p class="before-square-text">?</p>
+          </div>
         </div>
       </div>
     </div>
@@ -207,6 +212,10 @@
 
 <style scoped>
 
+  .totle-title-container{
+    padding: 20px 0px;
+    text-align: center;
+  }
   .bg4 {
     background-color: rgba(2,42,76,0.8);
   }

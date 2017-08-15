@@ -2,7 +2,8 @@
   <div class="container" :class="'container' + index ">
     <div class="bgimg" :style="imgStyle">
       <div class="title" :class="'title' + index" :style="titleLeave">
-        <h1>{{title}}</h1>
+        <p class="content">{{content}}</p>
+        <p class="content_en">{{content_en}}</p>
       </div>
     </div>
   </div>
@@ -10,7 +11,7 @@
 
 <script type="text/ecmascript-6">
   export default {
-    props: ['bgimg', 'title', 'index', 'leaveTitleIndex', 'leaveTitleTop', 'scrollY'],
+    props: ['bgimg', 'content', 'content_en', 'index', 'leaveTitleIndex', 'leaveTitleTop', 'scrollY'],
     data () {
       return {
         container: []
@@ -42,15 +43,18 @@
     background-size: cover;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     padding: 0px 40px 0px 40px;
   }
   .title{
-    font-size: 30px;
+    font-size: 18px;
     color: ghostwhite;
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 40%;
-    text-align: right;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 60%;
+    text-align: left;
     padding:0px 40px;
+  }
+  .content_en{
+    font-size: 12px;
   }
 </style>
