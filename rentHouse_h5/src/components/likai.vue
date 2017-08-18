@@ -29,7 +29,7 @@
   padding: 80px 0px;
   width: 100%;
   min-height: 400px;
-  background-image: url("../../static/image/3.jpg");
+  background-image: url("/static/image/3.jpg");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;

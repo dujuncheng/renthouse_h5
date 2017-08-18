@@ -2,6 +2,7 @@
   <div>
     <div class="totle-title-container">
       <h1>假如你现在手上有一笔钱，用它来租哪块儿地方最划算？</h1>
+      <p>选中区域，拖动下方的滑块，看看你能租到多大平米的房子吧！</p>
     </div>
     <div class="section-container">
       <div class="map-container">
