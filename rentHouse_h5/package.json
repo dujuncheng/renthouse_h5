@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "csshake": "^1.5.2",
     "echarts": "^3.6.2",
     "element-ui": "^1.4.2",
     "vue": "^2.3.3"

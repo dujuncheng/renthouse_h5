@@ -4,7 +4,6 @@
      <div class="cover" v-if="!isScale"></div>
    </transition>
     <div class="jietu-container"></div>
-    <div id="hotmapapp" style="width:100%;height: 600px"></div>
     <transition name="fadeslide">
       <div class="text-container" v-if="false">
         <yinhao></yinhao>
@@ -52,19 +51,20 @@
 <style scoped>
   .bottom-text-container{
     padding: 50px;
-    background-color: gainsboro;
+    background-color: rgb(64, 74, 89);
+    color: white;
+    text-align: left;
   }
 
   .jietu-container{
     width: 100%;
-    height: 100%;
+    height: 600px;
     background-image: url("/static/image/jietu.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
   }
   .decs_text{
-    color: rgba(255,255,255,0.5);
     font-size: 12px;
     margin-left: 20px;
   }
@@ -78,7 +78,6 @@
    z-index: 100;
  }
 .hot_map_container{
-  height: 600px;
   position: relative;
 }
 
@@ -111,7 +110,7 @@
    opacity: 0;
  }
   .text{ 
-    text-align: center;
+    text-align: left;
   }
 </style>
 

@@ -6,6 +6,11 @@
           <h1 class="title1" :style="title1">说到租房，北京的年轻人都哭了</h1>
           <p  class="title2" :style="title2">我们爬了两万条数据，用数据给你最精确的北京租房素描</p>
         </div>
+        <transition name="fade">
+          <div class="footer-container" v-if="scrollY < 1900">
+            <span class="icon-arrow-down2"></span>
+          </div>
+        </transition>
         <div class="block-container" :style="blockstyle">
           <div class="block1-container">
             <div class="block1" :style="block1">
@@ -201,6 +206,44 @@
    transform: translate(0,-50%);
    z-index: 6;
  }
+ .footer-container{
+   position: fixed;
+   bottom: 10%;
+   left: 50%;
+   transform: translate(0,-50%);
+   z-index: 6;
+ }
+ .icon-arrow-down2:after{
+   position:absolute;
+   content: '';
+   width: 50px;
+   height: 50px;
+   left: 50%;
+   top: 50%;
+   border-radius: 50%;
+   border:1px solid black;
+   transform: translate(-50%,-50%);
+   animation: bigfade 1.5s  1s infinite;
+ }
+ @keyframes bigfade {
+   0% {
+     opacity: 0;
+     transform: translate(-50%,-50%) scale(0.8);
+   }
+   50% {
+     opacity: 1;
+   }
+   100% {
+     opacity: 0;
+     transform: translate(-50%,-50%) scale(1.2);
+   }
+ }
+  .icon-arrow-down2:before{
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
  .block-container{
    width: 400vw;
    height: 400vw;
