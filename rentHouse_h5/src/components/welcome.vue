@@ -362,7 +362,7 @@
      height: 100%;
      width: 100%;
      transform: scale(0.5) rotate(-50deg);
-     background-image: url("/static/image/4.jpg");
+     background-image: url("http://image.dydata.io/UVHMaemGHmAu4c3y3Jq9hJ.jpg");
      background-repeat: no-repeat;
      background-position: 83% 59%;
      background-size: 80%;

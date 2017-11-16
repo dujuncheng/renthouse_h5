@@ -59,7 +59,7 @@
   .jietu-container{
     width: 100%;
     height: 600px;
-    background-image: url("/static/image/jietu.png");
+    background-image: url("http://image.dydata.io/M4adwDNYC4Dutq9YH5XsG1.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;

@@ -10,7 +10,7 @@
         </p>
       </div>
     </div>
-    <video autoplay loop id="bgvid" style="height: 120vh">
+    <video autoplay loop id="bgvid" style="height: 100%;width: 100%;object-fit:cover">
       <source src="../../static/video/rent_video_x264.mp4" type="video/webm">
       <source src="../../static/video/rent_video_x264.mp4" type="video/mp4">
     </video>

@@ -26,7 +26,7 @@
         }
       },
       imgStyle () {
-        return { backgroundPosition: '50% ' + this.scrollY * 100 / document.body.offsetHeight + '%', backgroundImage: 'url( /static/image/' + this.bgimg + ')', backgroundSize: 'auto 140vh' }
+        return { backgroundPosition: '50% ' + this.scrollY * 100 / document.body.offsetHeight + '%', backgroundImage: 'url(' + this.bgimg + ')', backgroundSize: 'auto 140vh' }
       }
     }
   }

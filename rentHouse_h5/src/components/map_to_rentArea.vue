@@ -642,7 +642,7 @@
     display: block;
   }
   .left-top-arrow{
-    background-image: url("../../static/image/arrow2.png");
+    background-image: url("http://image.dydata.io/SZkzoRhanWVAJ8rSAKcUZe.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -654,7 +654,7 @@
     top: 5px;
   }
   .right-bottom-arrow{
-    background-image: url("../../static/image/arrow1.png");
+    background-image: url("http://image.dydata.io/Wt9nqixahnRY9SK9iEvJYf.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;

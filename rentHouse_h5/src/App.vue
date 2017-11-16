@@ -2,9 +2,9 @@
   <div id="app">
     <welcome :scrollY="scrollY"></welcome>
     <shining_house></shining_house>
-    <imgcontainer :bgimg="'qiao.jpg'" :content="turan" :content_en="turan_en" :index="'1'" :leaveTitleIndex="leaveTitleIndex" :leaveTitleTop="leaveTitleTop" :scrollY="scrollY"></imgcontainer>
+    <imgcontainer :bgimg="'http://image.dydata.io/ULCrBjf363c9srsG7MANcv.jpg'" :content="turan" :content_en="turan_en" :index="'1'" :leaveTitleIndex="leaveTitleIndex" :leaveTitleTop="leaveTitleTop" :scrollY="scrollY"></imgcontainer>
     <ciyun></ciyun>
-    <imgcontainer :bgimg="'zhanglang.jpg'" :content="raner" :content_en="raner_en" :index="'2'" :leaveTitleIndex="leaveTitleIndex" :leaveTitleTop="leaveTitleTop" :scrollY="scrollY"></imgcontainer>
+    <imgcontainer :bgimg="'http://image.dydata.io/GqPweHzBcafUwxGA9Wyyah.jpg'" :content="raner" :content_en="raner_en" :index="'2'" :leaveTitleIndex="leaveTitleIndex" :leaveTitleTop="leaveTitleTop" :scrollY="scrollY"></imgcontainer>
     <countrymap></countrymap>
     <hot_map></hot_map>
     <yingxiang></yingxiang>
